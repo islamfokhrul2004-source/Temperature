@@ -6,13 +6,30 @@ public class Temperature {
         return c * 9 / 5 + 32;
     }
 
+    static double toKelvin(double c) {
+        return c + 273.15;
+    }
+
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
         System.out.print("Enter temperature in Celsius: ");
+
+        if (!input.hasNextDouble()) {
+            System.out.println("Please enter a number.");
+            return;
+        }
+
         double temp = input.nextDouble();
 
         double f = toFahrenheit(temp);
+        double k = toKelvin(temp);
+
         System.out.println(temp + " C = " + f + " F");
+        System.out.println(temp + " C = " + k + " K");
+
+        if (temp <= 0) {
+            System.out.println("It is freezing!");
+        }
     }
 }
